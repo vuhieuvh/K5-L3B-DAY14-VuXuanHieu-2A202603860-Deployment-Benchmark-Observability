@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 26 Nov 2026 08:34:15 GMT
+Content-Type: application/json
+Content-Length: 97
+Connection: keep-alive
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+
+{"status":"ok","uptime_seconds":318.6,"version":"2.0.0","timestamp":"2026-11-26T08:34:15.469058"}

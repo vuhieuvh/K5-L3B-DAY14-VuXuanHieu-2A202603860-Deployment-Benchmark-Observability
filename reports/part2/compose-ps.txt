@@ -1,0 +1,5 @@
+NAME                       IMAGE                   COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+k5-day14-docker-agent-1    k5-day14-docker-agent   "uvicorn main:app --…"   agent     5 minutes ago   Up 5 minutes (healthy)   8000/tcp
+k5-day14-docker-nginx-1    nginx:alpine            "/docker-entrypoint.…"   nginx     2 minutes ago   Up 2 minutes             127.0.0.1:18080->80/tcp
+k5-day14-docker-qdrant-1   qdrant/qdrant:v1.9.0    "./entrypoint.sh"        qdrant    5 minutes ago   Up 5 minutes (healthy)   6333-6334/tcp
+k5-day14-docker-redis-1    redis:7-alpine          "docker-entrypoint.s…"   redis     5 minutes ago   Up 5 minutes (healthy)   6379/tcp

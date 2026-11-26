@@ -1,0 +1,277 @@
+{
+  "run_at": "2026-11-26T15:54:16.994747+07:00",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "develop": {
+    "port": 8006,
+    "health": {
+      "path": "/health",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:54:17 GMT",
+        "server": "uvicorn",
+        "content-length": "184",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "status": "ok",
+        "uptime_seconds": 0.3,
+        "version": "1.0.0",
+        "environment": "development",
+        "timestamp": "2026-11-26T08:54:17.842866+00:00",
+        "checks": {
+          "memory": {
+            "status": "ok",
+            "used_percent": 9.2
+          }
+        }
+      }
+    },
+    "ready": {
+      "path": "/ready",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:54:17 GMT",
+        "server": "uvicorn",
+        "content-length": "37",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "ready": true,
+        "in_flight_requests": 1
+      }
+    },
+    "shutdown": {
+      "signal": "SIGTERM",
+      "request_pending_at_signal": true,
+      "process_wchan_at_signal": "hrtimer_nanosleep",
+      "response": {
+        "status": 200,
+        "body": {
+          "answer": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận."
+        },
+        "elapsed_seconds": 3.027603
+      },
+      "exit_code": 0,
+      "seconds_from_signal_to_exit": 2.74157
+    }
+  },
+  "scaling": {
+    "base_url": "http://127.0.0.1:18085",
+    "replicas": 3,
+    "official_script_exit_code": 0,
+    "health": {
+      "path": "/health",
+      "status": 200,
+      "headers": {
+        "Server": "nginx/1.31.10",
+        "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "110",
+        "Connection": "close",
+        "X-Served-By": "172.18.0.5:8000"
+      },
+      "body": {
+        "status": "ok",
+        "instance_id": "instance-7eb1e8",
+        "uptime_seconds": 27.7,
+        "storage": "redis",
+        "redis_connected": true
+      }
+    },
+    "ready": {
+      "path": "/ready",
+      "status": 200,
+      "headers": {
+        "Server": "nginx/1.31.10",
+        "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "43",
+        "Connection": "close",
+        "X-Served-By": "172.18.0.4:8000"
+      },
+      "body": {
+        "ready": true,
+        "instance": "instance-73ee8b"
+      }
+    },
+    "turns": [
+      {
+        "path": "/chat",
+        "status": 200,
+        "headers": {
+          "Server": "nginx/1.31.10",
+          "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+          "Content-Type": "application/json",
+          "Content-Length": "241",
+          "Connection": "close",
+          "X-Served-By": "172.18.0.5:8000"
+        },
+        "body": {
+          "session_id": "a4d686b2-5e59-48a0-9e11-06e53956b170",
+          "question": "What is Docker?",
+          "answer": "Container là cách đóng gói app để chạy ở mọi nơi. Build once, run anywhere!",
+          "turn": 2,
+          "served_by": "instance-7eb1e8",
+          "storage": "redis"
+        }
+      },
+      {
+        "path": "/chat",
+        "status": 200,
+        "headers": {
+          "Server": "nginx/1.31.10",
+          "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+          "Content-Type": "application/json",
+          "Content-Length": "264",
+          "Connection": "close",
+          "X-Served-By": "172.18.0.4:8000"
+        },
+        "body": {
+          "session_id": "a4d686b2-5e59-48a0-9e11-06e53956b170",
+          "question": "Why containers?",
+          "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+          "turn": 3,
+          "served_by": "instance-73ee8b",
+          "storage": "redis"
+        }
+      },
+      {
+        "path": "/chat",
+        "status": 200,
+        "headers": {
+          "Server": "nginx/1.31.10",
+          "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+          "Content-Type": "application/json",
+          "Content-Length": "245",
+          "Connection": "close",
+          "X-Served-By": "172.18.0.3:8000"
+        },
+        "body": {
+          "session_id": "a4d686b2-5e59-48a0-9e11-06e53956b170",
+          "question": "What is Kubernetes?",
+          "answer": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.",
+          "turn": 4,
+          "served_by": "instance-36901c",
+          "storage": "redis"
+        }
+      },
+      {
+        "path": "/chat",
+        "status": 200,
+        "headers": {
+          "Server": "nginx/1.31.10",
+          "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+          "Content-Type": "application/json",
+          "Content-Length": "247",
+          "Connection": "close",
+          "X-Served-By": "172.18.0.5:8000"
+        },
+        "body": {
+          "session_id": "a4d686b2-5e59-48a0-9e11-06e53956b170",
+          "question": "How does load balancing work?",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "turn": 5,
+          "served_by": "instance-7eb1e8",
+          "storage": "redis"
+        }
+      },
+      {
+        "path": "/chat",
+        "status": 200,
+        "headers": {
+          "Server": "nginx/1.31.10",
+          "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+          "Content-Type": "application/json",
+          "Content-Length": "249",
+          "Connection": "close",
+          "X-Served-By": "172.18.0.4:8000"
+        },
+        "body": {
+          "session_id": "a4d686b2-5e59-48a0-9e11-06e53956b170",
+          "question": "What is Redis used for?",
+          "answer": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.",
+          "turn": 6,
+          "served_by": "instance-73ee8b",
+          "storage": "redis"
+        }
+      }
+    ],
+    "history": {
+      "path": "/chat/a4d686b2-5e59-48a0-9e11-06e53956b170/history",
+      "status": 200,
+      "headers": {
+        "Server": "nginx/1.31.10",
+        "Date": "Thu, 26 Nov 2026 08:54:22 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "1428",
+        "Connection": "close",
+        "X-Served-By": "172.18.0.3:8000"
+      },
+      "body": {
+        "session_id": "a4d686b2-5e59-48a0-9e11-06e53956b170",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is Docker?",
+            "timestamp": "2026-11-26T08:54:22.240258+00:00"
+          },
+          {
+            "role": "assistant",
+            "content": "Container là cách đóng gói app để chạy ở mọi nơi. Build once, run anywhere!",
+            "timestamp": "2026-11-26T08:54:22.370548+00:00"
+          },
+          {
+            "role": "user",
+            "content": "Why containers?",
+            "timestamp": "2026-11-26T08:54:22.373408+00:00"
+          },
+          {
+            "role": "assistant",
+            "content": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+            "timestamp": "2026-11-26T08:54:22.475741+00:00"
+          },
+          {
+            "role": "user",
+            "content": "What is Kubernetes?",
+            "timestamp": "2026-11-26T08:54:22.478618+00:00"
+          },
+          {
+            "role": "assistant",
+            "content": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.",
+            "timestamp": "2026-11-26T08:54:22.590270+00:00"
+          },
+          {
+            "role": "user",
+            "content": "How does load balancing work?",
+            "timestamp": "2026-11-26T08:54:22.592536+00:00"
+          },
+          {
+            "role": "assistant",
+            "content": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+            "timestamp": "2026-11-26T08:54:22.695898+00:00"
+          },
+          {
+            "role": "user",
+            "content": "What is Redis used for?",
+            "timestamp": "2026-11-26T08:54:22.699356+00:00"
+          },
+          {
+            "role": "assistant",
+            "content": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.",
+            "timestamp": "2026-11-26T08:54:22.819375+00:00"
+          }
+        ],
+        "count": 10
+      }
+    },
+    "instances_seen": [
+      "instance-36901c",
+      "instance-73ee8b",
+      "instance-7eb1e8"
+    ],
+    "instance_failure_tested": false
+  }
+}

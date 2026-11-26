@@ -1,5 +1,48 @@
 # Part 6 — Final Project: Production-ready AI Agent
 
+> **Trạng thái bản fork — CP5 ngày 26/11/2026:** đã hoàn thiện các module app và cấu hình Docker/Render. Script chấm nguyên bản đạt **PASS 12/12, 42/42 checks** trên Ubuntu WSL2. Đây là kết quả local; **chưa deploy Render, chưa có URL public**. Bằng chứng: [production-check.txt](../reports/part6/production-check.txt), [Compose smoke](../reports/part6/compose-results.json), [bài làm và AI log](../MISSION_ANSWERS.md). Phần mô tả bản khung/TODO bên dưới là đề gốc.
+
+## Chạy bản đã hoàn thiện
+
+Dùng Python Linux 3.11 để khớp requirements pin của lab. Môi trường đã tạo trên máy học viên:
+
+```bash
+source ~/venvs/day14-part6/bin/activate
+cd /mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete
+python check_production_ready.py
+```
+
+Muốn chạy Compose local thủ công, tạo `.env` và sinh key mới (không commit hoặc log key):
+
+```bash
+cp -n .env.example .env
+python -c "from dotenv import set_key; import secrets; set_key('.env', 'AGENT_API_KEY', secrets.token_urlsafe(32))"
+docker compose -p k5-day14-part6 up -d --build
+curl http://localhost:18006/health
+curl http://localhost:18006/ready
+```
+
+API `/ask` cần header X-API-Key trùng giá trị trong `.env`. Không cấu hình key thì tất cả request /ask bị 401. Không dùng cùng key cho môi trường cloud và local. Host port 18006 tránh cổng 8000/8080 đang dùng bởi bài trước và ứng dụng khác.
+
+```bash
+docker compose -p k5-day14-part6 down
+```
+
+Redis có named volume và AOF; `down` giữ volume, `down -v` xóa state. Thử smoke có tự tạo key và tự dọn stack: `python ../scripts/run_part6_compose.py` từ thư mục này.
+
+Tests bổ sung (ngoài grader): cài `requirements-dev.txt`; chạy Redis tạm riêng ở host 18086 rồi `python -m unittest discover -s tests -v`. Biến TEST_REDIS_URL mặc định là `redis://127.0.0.1:18086/15`, chỉ trỏ tới Redis test dùng một lần, không trỏ cloud. Test dùng namespace ngẫu nhiên và Redis thật.
+
+### Giới hạn đã biết
+
+- Chi phí và token là mô phỏng của mock LLM, không phải hóa đơn nhà cung cấp.
+- Process chết sau khi reserve budget có thể giữ khoản dự trữ đến khi key hết hạn: an toàn ngân sách nhưng giảm khả dụng. Chưa có job đối soát reservation bị bỏ dở.
+- Unexpected exception có thể thiếu request log/X-Request-ID; Uvicorn có thể ghi traceback riêng. Trước khi thay mock bằng provider thật, cần rà soát đường lỗi và lọc thông tin nhạy cảm trong exception log.
+- Không có tính năng conversation history trong Part 6 này, không bắt buộc tính điểm.
+- Cấu hình Render và cách làm tiếp ở [DEPLOYMENT.md](../DEPLOYMENT.md); chưa tạo service cloud. Tài liệu Blueprint tham chiếu: [Render](https://render.com/docs/blueprint-spec).
+
+---
+
+
 Bạn tự xây một AI agent đủ chuẩn production từ **bản khung** trong thư mục này, kết hợp mọi thứ đã học ở Part 1–5.
 Mọi file đều đã có sẵn, phần việc của bạn nằm ở các chỗ ghi `TODO`. Bản khung chạy được nhưng **chưa đạt tiêu chí nào**.
 

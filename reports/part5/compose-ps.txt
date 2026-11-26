@@ -1,0 +1,6 @@
+NAME                       IMAGE                    COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+k5-day14-scaling-agent-1   k5-day14-scaling-agent   "python -m uvicorn a…"   agent     40 seconds ago   Up 28 seconds (healthy)   8000/tcp
+k5-day14-scaling-agent-2   k5-day14-scaling-agent   "python -m uvicorn a…"   agent     40 seconds ago   Up 28 seconds (healthy)   8000/tcp
+k5-day14-scaling-agent-3   k5-day14-scaling-agent   "python -m uvicorn a…"   agent     40 seconds ago   Up 28 seconds (healthy)   8000/tcp
+k5-day14-scaling-nginx-1   nginx:alpine             "/docker-entrypoint.…"   nginx     40 seconds ago   Up 27 seconds             127.0.0.1:18085->80/tcp
+k5-day14-scaling-redis-1   redis:7-alpine           "docker-entrypoint.s…"   redis     41 seconds ago   Up 39 seconds (healthy)   6379/tcp

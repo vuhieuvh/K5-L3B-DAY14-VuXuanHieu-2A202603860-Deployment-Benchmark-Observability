@@ -1,0 +1,91 @@
+
+🔎 Kiểm tra /mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete
+  ⏳ Kiểm tra tĩnh: file, Dockerfile, compose, config, code...
+
+================================================================
+  Production Readiness Check — Day 14 Lab
+================================================================
+
+❌ 1. Dockerfile (multi-stage, < 500 MB)
+     ✅ Dockerfile tồn tại
+     ✅ requirements.txt tồn tại
+     ❌ Multi-stage build (≥ 2 lệnh FROM) — 1 lệnh FROM
+     ❌ Base image gọn (slim / alpine / distroless) — stage cuối dùng python:3.11
+     ❌ Chạy bằng user non-root — thiếu lệnh USER
+     ❌ Có HEALTHCHECK
+     ⚠️  Docker: build image thành công — chưa chạy (--static-only)
+     ⚠️  Docker: image < 500 MB — chưa chạy (--static-only)
+     ⚠️  Docker: container chạy được, GET /health → 200 — chưa chạy (--static-only)
+
+❌ 2. docker-compose.yml (agent + redis)
+     ✅ docker-compose.yml tồn tại
+     ❌ Có service agent (build từ Dockerfile) + redis — services: agent — đọc bằng docker compose config
+
+❌ 3. .dockerignore
+     ❌ .dockerignore tồn tại và có nội dung — file trống / chỉ có comment
+     ❌ .dockerignore loại trừ .env (secrets)
+     ❌ .dockerignore loại trừ __pycache__, venv — thiếu: __pycache__, venv
+
+❌ 4. Health check endpoint (GET /health)
+     ❌ Code có route /health
+     ⚠️  Khi chạy: GET /health → 200 — chưa chạy (--static-only)
+
+❌ 5. Readiness endpoint (GET /ready)
+     ❌ Code có route /ready
+     ⚠️  Khi chạy: GET /ready → 200 — chưa chạy (--static-only)
+     ⚠️  Khi chạy: Redis mất kết nối → /ready 503 (còn /health vẫn 200) — chưa chạy (--static-only)
+
+❌ 6. API Key authentication
+     ❌ Code đọc header X-API-Key
+     ⚠️  Khi chạy: thiếu / sai API key → 401 — chưa chạy (--static-only)
+     ⚠️  Khi chạy: API key đúng → 200 — chưa chạy (--static-only)
+
+❌ 7. Rate limiting
+     ❌ Code trả HTTP 429 khi vượt giới hạn
+     ⚠️  Khi chạy: vượt giới hạn → 429 — chưa chạy (--static-only)
+     ⚠️  Khi chạy: state nằm trong Redis — restart agent vẫn bị 429 — chưa chạy (--static-only)
+
+❌ 8. Cost guard
+     ❌ Code trả HTTP 402 khi hết budget
+     ⚠️  Khi chạy: hết budget → 402 — chưa chạy (--static-only)
+
+❌ 9. Config từ environment variables
+     ❌ app/config.py đọc biến môi trường
+     ❌ .env.example liệt kê đủ biến cấu hình — thiếu: AGENT_API_KEY, REDIS_URL, RATE_LIMIT_PER_MINUTE, DAILY_BUDGET_USD / MONTHLY_BUDGET_USD
+     ✅ .env nằm trong .gitignore
+     ✅ Không hard-code secret trong code
+     ⚠️  Khi chạy: agent dùng AGENT_API_KEY và RATE_LIMIT_PER_MINUTE từ env — chưa chạy (--static-only)
+
+❌ 10. Structured logging
+     ❌ Code ghi log dạng JSON
+     ⚠️  Khi chạy: mọi dòng log của app là JSON hợp lệ — chưa chạy (--static-only)
+
+❌ 11. Graceful shutdown
+     ❌ Code xử lý SIGTERM / lifespan shutdown
+     ⚠️  Khi chạy: SIGTERM lúc đang có request → request vẫn 200, process tự thoát — chưa chạy (--static-only)
+     ⚠️  Docker: `docker stop` tắt êm (exit code 0, < 10s) — chưa chạy (--static-only)
+
+❌ 12. Public URL ready (Railway / Render config)
+     ❌ Có railway.toml hoặc render.yaml (không chỉ toàn comment)
+     ❌ App lắng nghe theo biến PORT do platform cấp — CMD trong Dockerfile đang cố định port — dùng ${PORT:-8000}
+
+================================================================
+  📋 Checklist Deliverable
+     ❌ Dockerfile (multi-stage, < 500 MB)
+     ❌ docker-compose.yml (agent + redis)
+     ❌ .dockerignore
+     ❌ Health check endpoint (GET /health)
+     ❌ Readiness endpoint (GET /ready)
+     ❌ API Key authentication
+     ❌ Rate limiting
+     ❌ Cost guard
+     ❌ Config từ environment variables
+     ❌ Structured logging
+     ❌ Graceful shutdown
+     ❌ Public URL ready (Railway / Render config)
+----------------------------------------------------------------
+  Result: 0/12 tiêu chí đạt · 5/24 checks passed
+  ℹ️  Đang chạy chế độ nhanh — kết quả chấm phải chạy đầy đủ (không --static-only / --skip-docker)
+  ❌ CHƯA ĐẠT — sửa 12 tiêu chí ❌ ở trên.
+================================================================
+

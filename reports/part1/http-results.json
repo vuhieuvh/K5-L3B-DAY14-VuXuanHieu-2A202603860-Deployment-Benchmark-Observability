@@ -1,0 +1,132 @@
+{
+  "run_at": "2026-11-26T14:59:53.356109+07:00",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "os_name": "posix",
+  "python": "3.14.4",
+  "fastapi": "0.115.0",
+  "uvicorn": "0.30.0",
+  "graceful_shutdown_tested": false,
+  "note": "Real HTTP on loopback; uvicorn CLI, no reload. Mock LLM. Not a load test.",
+  "develop": {
+    "base_url": "http://127.0.0.1:8000",
+    "command": [
+      "/home/vuhieuxh99/venvs/day14/bin/python",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000"
+    ],
+    "responses": [
+      {
+        "method": "GET",
+        "path": "/",
+        "request_json": null,
+        "status": 200,
+        "body": {
+          "message": "Hello! Agent is running on my machine :)"
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask?question=Hello",
+        "request_json": null,
+        "status": 200,
+        "body": {
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé."
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "request_json": {
+          "question": "Hello"
+        },
+        "status": 422,
+        "body": {
+          "detail": [
+            {
+              "type": "missing",
+              "loc": [
+                "query",
+                "question"
+              ],
+              "msg": "Field required",
+              "input": null
+            }
+          ]
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/health",
+        "request_json": null,
+        "status": 404,
+        "body": {
+          "detail": "Not Found"
+        }
+      }
+    ]
+  },
+  "production": {
+    "base_url": "http://127.0.0.1:8001",
+    "command": [
+      "/home/vuhieuxh99/venvs/day14/bin/python",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8001"
+    ],
+    "responses": [
+      {
+        "method": "POST",
+        "path": "/ask",
+        "request_json": {
+          "question": "Hello"
+        },
+        "status": 200,
+        "body": {
+          "question": "Hello",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "model": "gpt-4o-mini"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/health",
+        "request_json": null,
+        "status": 200,
+        "body": {
+          "status": "ok",
+          "uptime_seconds": 0.4,
+          "version": "1.0.0",
+          "environment": "development",
+          "timestamp": "2026-11-26T07:59:55.501367+00:00"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/ready",
+        "request_json": null,
+        "status": 200,
+        "body": {
+          "ready": true
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "request_json": {},
+        "status": 422,
+        "body": {
+          "detail": "question field is required"
+        }
+      }
+    ]
+  }
+}

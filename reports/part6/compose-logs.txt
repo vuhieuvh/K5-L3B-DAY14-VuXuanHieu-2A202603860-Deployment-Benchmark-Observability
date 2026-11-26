@@ -1,0 +1,48 @@
+agent-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+agent-1  | INFO:     Started parent process [1]
+agent-1  | INFO:     Started server process [8]
+agent-1  | INFO:     Waiting for application startup.
+agent-1  | {"ts": "2026-11-26T09:27:57.149326+00:00", "lvl": "INFO", "event": "startup", "environment": "development"}
+agent-1  | INFO:     Application startup complete.
+agent-1  | INFO:     Started server process [9]
+agent-1  | INFO:     Waiting for application startup.
+agent-1  | {"ts": "2026-11-26T09:27:57.161652+00:00", "lvl": "INFO", "event": "startup", "environment": "development"}
+agent-1  | INFO:     Application startup complete.
+agent-1  | {"ts": "2026-11-26T09:28:01.082908+00:00", "lvl": "INFO", "event": "request", "request_id": "2ecffbd12ee54485a46afccbcffb0a09", "method": "GET", "path": "/health", "status": 200, "ms": 1.003}
+agent-1  | INFO:     127.0.0.1:49790 - "GET /health HTTP/1.1" 200 OK
+agent-1  | {"ts": "2026-11-26T09:28:01.204867+00:00", "lvl": "INFO", "event": "request", "request_id": "e05569abb9e344398cfb95eda12a5ab4", "method": "GET", "path": "/health", "status": 200, "ms": 0.638}
+agent-1  | INFO:     172.18.0.1:48488 - "GET /health HTTP/1.1" 200 OK
+agent-1  | {"ts": "2026-11-26T09:28:01.225211+00:00", "lvl": "INFO", "event": "request", "request_id": "08ff68ae012f42a9b04dd96ae82dcfaa", "method": "GET", "path": "/ready", "status": 200, "ms": 10.559}
+agent-1  | INFO:     172.18.0.1:48500 - "GET /ready HTTP/1.1" 200 OK
+agent-1  | {"ts": "2026-11-26T09:28:01.227360+00:00", "lvl": "INFO", "event": "request", "request_id": "48491d14300243fc85b3344a25f3e1c5", "method": "POST", "path": "/ask", "status": 401, "ms": 0.76}
+agent-1  | INFO:     172.18.0.1:48512 - "POST /ask HTTP/1.1" 401 Unauthorized
+agent-1  | {"ts": "2026-11-26T09:28:01.230030+00:00", "lvl": "INFO", "event": "request", "request_id": "964561db3d35443ebe01448b29016a2b", "method": "POST", "path": "/ask", "status": 401, "ms": 0.688}
+agent-1  | INFO:     172.18.0.1:48514 - "POST /ask HTTP/1.1" 401 Unauthorized
+agent-1  | {"ts": "2026-11-26T09:28:01.376886+00:00", "lvl": "INFO", "event": "mock_usage", "cost_usd": 1.89e-05, "simulated": true}
+agent-1  | {"ts": "2026-11-26T09:28:01.377336+00:00", "lvl": "INFO", "event": "request", "request_id": "1a7bd1832a5c413a89aa7ad60c5fb589", "method": "POST", "path": "/ask", "status": 200, "ms": 145.607}
+agent-1  | INFO:     172.18.0.1:48528 - "POST /ask HTTP/1.1" 200 OK
+agent-1  | INFO:     Received SIGTERM, exiting.
+agent-1  | INFO:     Terminated child process [8]
+agent-1  | INFO:     Terminated child process [9]
+agent-1  | INFO:     Waiting for child process [8]
+agent-1  | INFO:     Shutting down
+agent-1  | INFO:     Shutting down
+agent-1  | INFO:     Waiting for application shutdown.
+agent-1  | {"ts": "2026-11-26T09:28:02.486797+00:00", "lvl": "INFO", "event": "shutdown_complete"}
+agent-1  | INFO:     Application shutdown complete.
+agent-1  | INFO:     Finished server process [9]
+agent-1  | INFO:     Waiting for application shutdown.
+agent-1  | {"ts": "2026-11-26T09:28:02.571715+00:00", "lvl": "INFO", "event": "shutdown_complete"}
+agent-1  | INFO:     Application shutdown complete.
+agent-1  | INFO:     Finished server process [8]
+agent-1  | INFO:     Waiting for child process [9]
+agent-1  | INFO:     Stopping parent process [1]
+redis-1  | 1:C 26 Nov 2026 09:27:50.303 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 26 Nov 2026 09:27:50.303 * Redis version=7.4.12, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 26 Nov 2026 09:27:50.303 * Configuration loaded
+redis-1  | 1:M 26 Nov 2026 09:27:50.303 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 26 Nov 2026 09:27:50.304 * Running mode=standalone, port=6379.
+redis-1  | 1:M 26 Nov 2026 09:27:50.304 * Server initialized
+redis-1  | 1:M 26 Nov 2026 09:27:50.313 * Creating AOF base file appendonly.aof.1.base.rdb on server start
+redis-1  | 1:M 26 Nov 2026 09:27:50.323 * Creating AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1  | 1:M 26 Nov 2026 09:27:50.323 * Ready to accept connections tcp

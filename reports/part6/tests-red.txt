@@ -1,0 +1,102 @@
+test_liveness_and_readiness (test_contract.ContractTests.test_liveness_and_readiness) ... INFO:httpx:HTTP Request: GET http://testserver/health "HTTP/1.1 404 Not Found"
+FAIL
+test_missing_and_wrong_keys_are_401 (test_contract.ContractTests.test_missing_and_wrong_keys_are_401) ... INFO:httpx:HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+FAIL
+test_valid_key_receives_answer (test_contract.ContractTests.test_valid_key_receives_answer) ... INFO:httpx:HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+ok
+test_whitespace_or_wrong_type_is_422 (test_contract.ContractTests.test_whitespace_or_wrong_type_is_422) ... INFO:httpx:HTTP Request: POST http://testserver/ask "HTTP/1.1 200 OK"
+FAIL
+test_cost_settlement_releases_unused_reserve_and_is_idempotent (test_contract.RedisBehaviorTests.test_cost_settlement_releases_unused_reserve_and_is_idempotent) ... ERROR
+test_dependency_outage_keeps_health_but_blocks_ready_and_ask (test_contract.RedisBehaviorTests.test_dependency_outage_keeps_health_but_blocks_ready_and_ask) ... INFO:httpx:HTTP Request: GET http://testserver/health "HTTP/1.1 404 Not Found"
+FAIL
+test_json_logging_escapes_quotes_without_leaking_request (test_contract.RedisBehaviorTests.test_json_logging_escapes_quotes_without_leaking_request) ... ERROR
+test_parallel_budget_reservations_cannot_overspend (test_contract.RedisBehaviorTests.test_parallel_budget_reservations_cannot_overspend) ... ERROR
+test_parallel_rate_requests_share_one_limit (test_contract.RedisBehaviorTests.test_parallel_rate_requests_share_one_limit) ... ERROR
+
+======================================================================
+ERROR: test_cost_settlement_releases_unused_reserve_and_is_idempotent (test_contract.RedisBehaviorTests.test_cost_settlement_releases_unused_reserve_and_is_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 87, in test_cost_settlement_releases_unused_reserve_and_is_idempotent
+    from app.cost_guard import check_budget, record_cost, release_budget
+ImportError: cannot import name 'release_budget' from 'app.cost_guard' (/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/app/cost_guard.py)
+
+======================================================================
+ERROR: test_json_logging_escapes_quotes_without_leaking_request (test_contract.RedisBehaviorTests.test_json_logging_escapes_quotes_without_leaking_request)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 117, in test_json_logging_escapes_quotes_without_leaking_request
+    from app.main import JsonFormatter
+ImportError: cannot import name 'JsonFormatter' from 'app.main' (/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/app/main.py)
+
+======================================================================
+ERROR: test_parallel_budget_reservations_cannot_overspend (test_contract.RedisBehaviorTests.test_parallel_budget_reservations_cannot_overspend)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 66, in test_parallel_budget_reservations_cannot_overspend
+    from app.cost_guard import check_budget, release_budget
+ImportError: cannot import name 'release_budget' from 'app.cost_guard' (/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/app/cost_guard.py)
+
+======================================================================
+ERROR: test_parallel_rate_requests_share_one_limit (test_contract.RedisBehaviorTests.test_parallel_rate_requests_share_one_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 60, in test_parallel_rate_requests_share_one_limit
+    statuses = list(pool.map(attempt, range(20)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vuhieuxh99/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vuhieuxh99/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/vuhieuxh99/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/vuhieuxh99/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/vuhieuxh99/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 53, in attempt
+    check_rate_limit(key)
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/app/rate_limiter.py", line 14, in check_rate_limit
+    raise NotImplementedError("TODO: check_rate_limit")
+NotImplementedError: TODO: check_rate_limit
+
+======================================================================
+FAIL: test_liveness_and_readiness (test_contract.ContractTests.test_liveness_and_readiness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 41, in test_liveness_and_readiness
+    self.assertEqual(self.client.get("/health").status_code, 200)
+AssertionError: 404 != 200
+
+======================================================================
+FAIL: test_missing_and_wrong_keys_are_401 (test_contract.ContractTests.test_missing_and_wrong_keys_are_401)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 27, in test_missing_and_wrong_keys_are_401
+    self.assertEqual(self.client.post("/ask", headers=headers,
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_whitespace_or_wrong_type_is_422 (test_contract.ContractTests.test_whitespace_or_wrong_type_is_422)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 38, in test_whitespace_or_wrong_type_is_422
+    self.assertEqual(response.status_code, 422)
+AssertionError: 200 != 422
+
+======================================================================
+FAIL: test_dependency_outage_keeps_health_but_blocks_ready_and_ask (test_contract.RedisBehaviorTests.test_dependency_outage_keeps_health_but_blocks_ready_and_ask)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/06-lab-complete/tests/test_contract.py", line 105, in test_dependency_outage_keeps_health_but_blocks_ready_and_ask
+    self.assertEqual(client.get("/health").status_code, 200)
+AssertionError: 404 != 200
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.794s
+
+FAILED (failures=4, errors=4)

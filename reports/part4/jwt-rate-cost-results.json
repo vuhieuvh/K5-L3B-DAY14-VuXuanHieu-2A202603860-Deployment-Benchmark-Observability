@@ -1,0 +1,782 @@
+{
+  "run_at": "2026-11-26T15:49:37.499938+07:00",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "os_name": "posix",
+  "python": "3.14.4",
+  "pyjwt": "2.15.1",
+  "fastapi": "0.115.0",
+  "uvicorn": "0.30.0",
+  "note": "Real local HTTP, mock LLM. Costs are mock estimates, not real provider charges. JWTs and signing secrets not saved.",
+  "jwt_rate_port": 8004,
+  "jwt_results": [
+    {
+      "method": "POST",
+      "path": "/ask",
+      "status": 401,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+        "server": "uvicorn",
+        "www-authenticate": "Bearer",
+        "content-length": "76",
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "connection": "close"
+      },
+      "body": {
+        "detail": "Authentication required. Include: Authorization: Bearer <token>"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token",
+      "status": 401,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+        "server": "uvicorn",
+        "content-length": "32",
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "connection": "close"
+      },
+      "body": {
+        "detail": "Invalid credentials"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+        "server": "uvicorn",
+        "content-length": "307",
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "connection": "close"
+      },
+      "body": {
+        "access_token": "[REDACTED]",
+        "token_type": "bearer",
+        "expires_in_minutes": 60,
+        "hint": "Authorization: Bearer [REDACTED]"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ask",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+        "server": "uvicorn",
+        "content-length": "215",
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "connection": "close"
+      },
+      "body": {
+        "question": "Explain JWT",
+        "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+        "usage": {
+          "requests_remaining": 9,
+          "budget_remaining_usd": 2.1e-05
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/admin/stats",
+      "status": 403,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+        "server": "uvicorn",
+        "content-length": "23",
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "connection": "close"
+      },
+      "body": {
+        "detail": "Admin only"
+      }
+    }
+  ],
+  "rate_test": {
+    "request_count": 20,
+    "prior_successful_ask_requests": 1,
+    "counts": {
+      "200": 9,
+      "429": 11
+    },
+    "responses": [
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "179",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 1",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "usage": {
+            "requests_remaining": 8,
+            "budget_remaining_usd": 3.7e-05
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "187",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 2",
+          "answer": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.",
+          "usage": {
+            "requests_remaining": 7,
+            "budget_remaining_usd": 5.6e-05
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "179",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 3",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "usage": {
+            "requests_remaining": 6,
+            "budget_remaining_usd": 7.2e-05
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "187",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 4",
+          "answer": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.",
+          "usage": {
+            "requests_remaining": 5,
+            "budget_remaining_usd": 9.1e-05
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "180",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 5",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "usage": {
+            "requests_remaining": 4,
+            "budget_remaining_usd": 0.000107
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "211",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 6",
+          "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+          "usage": {
+            "requests_remaining": 3,
+            "budget_remaining_usd": 0.000128
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "180",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 7",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "usage": {
+            "requests_remaining": 2,
+            "budget_remaining_usd": 0.000144
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "179",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 8",
+          "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.",
+          "usage": {
+            "requests_remaining": 1,
+            "budget_remaining_usd": 0.00016
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:34 GMT",
+          "server": "uvicorn",
+          "content-length": "211",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Test 9",
+          "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+          "usage": {
+            "requests_remaining": 0,
+            "budget_remaining_usd": 0.000181
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 429,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "x-ratelimit-limit": "10",
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-reset": "1795683036",
+          "retry-after": "59",
+          "content-length": "98",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Rate limit exceeded",
+            "limit": 10,
+            "window_seconds": 60,
+            "retry_after_seconds": 59
+          }
+        }
+      }
+    ],
+    "usage_after": {
+      "method": "GET",
+      "path": "/me/usage",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+        "server": "uvicorn",
+        "content-length": "184",
+        "content-type": "application/json",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "connection": "close"
+      },
+      "body": {
+        "user_id": "student",
+        "date": "2026-11-26",
+        "requests": 10,
+        "input_tokens": 40,
+        "output_tokens": 292,
+        "cost_usd": 0.000181,
+        "budget_usd": 1.0,
+        "budget_remaining_usd": 0.999819,
+        "budget_used_pct": 0.0
+      }
+    }
+  },
+  "cost_experiment": {
+    "port": 8005,
+    "daily_budget_usd": 1e-06,
+    "setup": "Isolated server, set app.cost_guard.daily_budget_usd in memory before uvicorn.run. Default demo budget is 1.0; source files unchanged.",
+    "responses": [
+      {
+        "method": "POST",
+        "path": "/auth/token",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "content-length": "307",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "access_token": "[REDACTED]",
+          "token_type": "bearer",
+          "expires_in_minutes": 60,
+          "hint": "Authorization: Bearer [REDACTED]"
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "content-length": "209",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "question": "Hello",
+          "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+          "usage": {
+            "requests_remaining": 9,
+            "budget_remaining_usd": 2.1e-05
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/ask",
+        "status": 402,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "content-length": "109",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "detail": {
+            "error": "Daily budget exceeded",
+            "used_usd": 2.1e-05,
+            "budget_usd": 1e-06,
+            "resets_at": "midnight UTC"
+          }
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/me/usage",
+        "status": 200,
+        "headers": {
+          "date": "Thu, 26 Nov 2026 08:49:36 GMT",
+          "server": "uvicorn",
+          "content-length": "178",
+          "content-type": "application/json",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "1; mode=block",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "connection": "close"
+        },
+        "body": {
+          "user_id": "student",
+          "date": "2026-11-26",
+          "requests": 1,
+          "input_tokens": 2,
+          "output_tokens": 34,
+          "cost_usd": 2.1e-05,
+          "budget_usd": 1e-06,
+          "budget_remaining_usd": 0,
+          "budget_used_pct": 2100.0
+        }
+      }
+    ]
+  }
+}

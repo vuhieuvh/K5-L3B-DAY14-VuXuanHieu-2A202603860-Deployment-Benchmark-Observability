@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-11-26T16:28:01.199100+07:00",
+  "responses": [
+    {
+      "path": "/health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "uptime_seconds": 4.048
+      }
+    },
+    {
+      "path": "/ready",
+      "status": 200,
+      "body": {
+        "ready": true
+      }
+    },
+    {
+      "path": "/ask",
+      "status": 401,
+      "body": {
+        "detail": "Missing or invalid API key"
+      }
+    },
+    {
+      "path": "/ask",
+      "status": 401,
+      "body": {
+        "detail": "Missing or invalid API key"
+      }
+    },
+    {
+      "path": "/ask",
+      "status": 200,
+      "body": {
+        "question": "What is Docker?",
+        "answer": "Container là cách đóng gói app để chạy ở mọi nơi. Build once, run anywhere!",
+        "usage": {
+          "cost_usd": 1.89e-05,
+          "simulated": true
+        }
+      }
+    }
+  ],
+  "container": {
+    "image_id": "sha256:4950d69fee1d693106921e6d2c64a68ed3d60d6edeb4e9676696fbd4c42c0cae",
+    "image_size_bytes": 249239205,
+    "user": "agent",
+    "uid": "999",
+    "health": "healthy",
+    "pid1_command": "/usr/local/bin/python3.11 /usr/local/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2 --timeout-graceful-shutdown 8"
+  },
+  "stop_seconds": 0.936957,
+  "stop_exit_code": 0
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "Command": "\"python -m uvicorn a\u2026\"",
+    "CreatedAt": "2026-11-26 08:53:41 +0000 UTC",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "1377e2d12b9c",
+    "Image": "k5-day14-scaling-agent",
+    "Labels": "com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-scaling,com.docker.compose.project.config_files=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production/docker-compose.yml,com.docker.compose.project.working_dir=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production,com.docker.compose.service=agent,com.docker.compose.version=5.7.1,com.docker.compose.config-hash=e76fa8dd1ee85fa69cfad86aafa86da1ba1fdacc4824944ee2a82c82cc5918e6,com.docker.compose.container-number=1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/wsl-distro=Ubuntu,com.docker.compose.depends_on=redis:service_healthy:false,com.docker.compose.image=sha256:6a1e35fabb2ca51a78d75f1b3788bb83e7798513223edb831decf437d45dbd21",
+    "LocalVolumes": "0",
+    "Mounts": "",
+    "Name": "k5-day14-scaling-agent-1",
+    "Names": "k5-day14-scaling-agent-1",
+    "Networks": "k5-day14-scaling_agent_net",
+    "Ports": "8000/tcp",
+    "Project": "k5-day14-scaling",
+    "Publishers": [
+      {
+        "URL": "",
+        "TargetPort": 8000,
+        "PublishedPort": 0,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "40 seconds ago",
+    "Service": "agent",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 28 seconds (healthy)"
+  },
+  {
+    "Command": "\"python -m uvicorn a\u2026\"",
+    "CreatedAt": "2026-11-26 08:53:41 +0000 UTC",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "5aeec0a5d5ab",
+    "Image": "k5-day14-scaling-agent",
+    "Labels": "com.docker.compose.container-number=2,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-scaling,com.docker.compose.project.working_dir=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production,com.docker.compose.version=5.7.1,desktop.docker.io/ports.scheme=v2,com.docker.compose.config-hash=e76fa8dd1ee85fa69cfad86aafa86da1ba1fdacc4824944ee2a82c82cc5918e6,com.docker.compose.depends_on=redis:service_healthy:false,com.docker.compose.image=sha256:6a1e35fabb2ca51a78d75f1b3788bb83e7798513223edb831decf437d45dbd21,com.docker.compose.project.config_files=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production/docker-compose.yml,com.docker.compose.service=agent,desktop.docker.io/wsl-distro=Ubuntu",
+    "LocalVolumes": "0",
+    "Mounts": "",
+    "Name": "k5-day14-scaling-agent-2",
+    "Names": "k5-day14-scaling-agent-2",
+    "Networks": "k5-day14-scaling_agent_net",
+    "Ports": "8000/tcp",
+    "Project": "k5-day14-scaling",
+    "Publishers": [
+      {
+        "URL": "",
+        "TargetPort": 8000,
+        "PublishedPort": 0,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "40 seconds ago",
+    "Service": "agent",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 28 seconds (healthy)"
+  },
+  {
+    "Command": "\"python -m uvicorn a\u2026\"",
+    "CreatedAt": "2026-11-26 08:53:41 +0000 UTC",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "4c2f45dfd3c4",
+    "Image": "k5-day14-scaling-agent",
+    "Labels": "com.docker.compose.config-hash=e76fa8dd1ee85fa69cfad86aafa86da1ba1fdacc4824944ee2a82c82cc5918e6,com.docker.compose.container-number=3,com.docker.compose.image=sha256:6a1e35fabb2ca51a78d75f1b3788bb83e7798513223edb831decf437d45dbd21,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-scaling,com.docker.compose.project.working_dir=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production,com.docker.compose.version=5.7.1,desktop.docker.io/ports.scheme=v2,com.docker.compose.depends_on=redis:service_healthy:false,com.docker.compose.project.config_files=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production/docker-compose.yml,com.docker.compose.service=agent,desktop.docker.io/wsl-distro=Ubuntu",
+    "LocalVolumes": "0",
+    "Mounts": "",
+    "Name": "k5-day14-scaling-agent-3",
+    "Names": "k5-day14-scaling-agent-3",
+    "Networks": "k5-day14-scaling_agent_net",
+    "Ports": "8000/tcp",
+    "Project": "k5-day14-scaling",
+    "Publishers": [
+      {
+        "URL": "",
+        "TargetPort": 8000,
+        "PublishedPort": 0,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "40 seconds ago",
+    "Service": "agent",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 27 seconds (healthy)"
+  },
+  {
+    "Command": "\"/docker-entrypoint.\u2026\"",
+    "CreatedAt": "2026-11-26 08:53:41 +0000 UTC",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "",
+    "ID": "d6b7ae98d14d",
+    "Image": "nginx:alpine",
+    "Labels": "com.docker.compose.config-hash=9538f7907e3797c9bd08e26f12a65b4545a551d5901c2a0d9ffbffa3c9c2938a,com.docker.compose.depends_on=agent:service_started:false,com.docker.compose.project=k5-day14-scaling,com.docker.compose.service=nginx,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/wsl-distro=Ubuntu,com.docker.compose.image=sha256:54845972134f849c623fe5cfbedee7e1d35a5708c84a4f36bf9471a9b7aa673d,com.docker.compose.project.working_dir=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production,maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>,desktop.docker.io/binds/0/Target=/etc/nginx/nginx.conf,com.docker.compose.container-number=1,com.docker.compose.project.config_files=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production/docker-compose.yml,com.docker.compose.version=5.7.1,desktop.docker.io/ports/80/tcp=127.0.0.1:18085,com.docker.compose.oneoff=False,desktop.docker.io/binds/0/Source=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production/nginx.conf,desktop.docker.io/ports.scheme=v2",
+    "LocalVolumes": "0",
+    "Mounts": "/run/desktop/m\u2026",
+    "Name": "k5-day14-scaling-nginx-1",
+    "Names": "k5-day14-scaling-nginx-1",
+    "Networks": "k5-day14-scaling_agent_net",
+    "Ports": "127.0.0.1:18085->80/tcp",
+    "Project": "k5-day14-scaling",
+    "Publishers": [
+      {
+        "URL": "127.0.0.1",
+        "TargetPort": 80,
+        "PublishedPort": 18085,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "40 seconds ago",
+    "Service": "nginx",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 27 seconds"
+  },
+  {
+    "Command": "\"docker-entrypoint.s\u2026\"",
+    "CreatedAt": "2026-11-26 08:53:40 +0000 UTC",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "91a9fcb54aed",
+    "Image": "redis:7-alpine",
+    "Labels": "com.docker.compose.project.config_files=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production/docker-compose.yml,com.docker.compose.project.working_dir=/mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/05-scaling-reliability/production,com.docker.compose.version=5.7.1,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.service=redis,desktop.docker.io/ports.scheme=v2,desktop.docker.io/wsl-distro=Ubuntu,com.docker.compose.config-hash=1b643499ef70a4bf4a3330f551d9a43e8810518d560d368180557adfb34a0e5b,com.docker.compose.image=sha256:e4ee3e03ce8f75471f40937a7c6b2b0e500390b6812fcdf5cb32c01295ded446,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-scaling",
+    "LocalVolumes": "1",
+    "Mounts": "5f628f2e1e9f8c\u2026",
+    "Name": "k5-day14-scaling-redis-1",
+    "Names": "k5-day14-scaling-redis-1",
+    "Networks": "k5-day14-scaling_agent_net",
+    "Ports": "6379/tcp",
+    "Project": "k5-day14-scaling",
+    "Publishers": [
+      {
+        "URL": "",
+        "TargetPort": 6379,
+        "PublishedPort": 0,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "41 seconds ago",
+    "Service": "redis",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 39 seconds (healthy)"
+  }
+]

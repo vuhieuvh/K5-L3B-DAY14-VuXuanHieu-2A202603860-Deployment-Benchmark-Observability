@@ -65,7 +65,7 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "8080:80"
+      - "127.0.0.1:18085:80"  # Cổng 8080 đang được ứng dụng khác dùng trên máy lab
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:

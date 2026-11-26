@@ -8,7 +8,7 @@
 #   4. nginx    — Reverse proxy, load balancer
 #
 # Chạy: docker compose up
-# Test:  curl http://localhost/health
+# Test:  curl http://localhost:18080/health
 # Stop:  docker compose down
 # ============================================================
 
@@ -89,8 +89,7 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"      # HTTP
-      - "443:443"    # HTTPS (cần cert)
+      - "127.0.0.1:18080:80"  # Local lab HTTP; host 80 dành riêng, 8080 đã được dùng
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:

@@ -1,0 +1,16 @@
+INFO:     Started server process [1470]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:48172 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48174 - "GET / HTTP/1.1" 200 OK
+[DEBUG] Got question: Hello
+[DEBUG] Using key: sk-hardcoded-fake-key-never-do-this
+[DEBUG] Response: Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.
+INFO:     127.0.0.1:48176 - "POST /ask?question=Hello HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48180 - "POST /ask HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:48192 - "GET /health HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1470]

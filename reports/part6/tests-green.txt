@@ -1,0 +1,27 @@
+test_liveness_and_readiness (test_contract.ContractTests.test_liveness_and_readiness) ... {"ts": "2026-11-26T09:25:10.357981+00:00", "lvl": "INFO", "event": "request", "request_id": "fe065894c2ca43959f5c89c4f0ca15d4", "method": "GET", "path": "/health", "status": 200, "ms": 1.822}
+{"ts": "2026-11-26T09:25:10.376947+00:00", "lvl": "INFO", "event": "request", "request_id": "ad39ad3088274afea9a1093d7288ea85", "method": "GET", "path": "/ready", "status": 200, "ms": 14.705}
+ok
+test_missing_and_wrong_keys_are_401 (test_contract.ContractTests.test_missing_and_wrong_keys_are_401) ... {"ts": "2026-11-26T09:25:10.383003+00:00", "lvl": "INFO", "event": "request", "request_id": "9ef9caba95ea4186a3cd745cb7f50a81", "method": "POST", "path": "/ask", "status": 401, "ms": 1.049}
+{"ts": "2026-11-26T09:25:10.388152+00:00", "lvl": "INFO", "event": "request", "request_id": "382ec7d207e74ff3914a9fe8d08ec364", "method": "POST", "path": "/ask", "status": 401, "ms": 1.543}
+ok
+test_valid_key_receives_answer (test_contract.ContractTests.test_valid_key_receives_answer) ... {"ts": "2026-11-26T09:25:10.526480+00:00", "lvl": "INFO", "event": "mock_usage", "cost_usd": 1.83e-05, "simulated": true}
+{"ts": "2026-11-26T09:25:10.528220+00:00", "lvl": "INFO", "event": "request", "request_id": "98d67a0c7099487ea7ec475cdeb9526b", "method": "POST", "path": "/ask", "status": 200, "ms": 133.511}
+ok
+test_whitespace_or_wrong_type_is_422 (test_contract.ContractTests.test_whitespace_or_wrong_type_is_422) ... {"ts": "2026-11-26T09:25:10.535997+00:00", "lvl": "INFO", "event": "request", "request_id": "6d9fd46b8cb34468a48c925205327730", "method": "POST", "path": "/ask", "status": 422, "ms": 1.494}
+{"ts": "2026-11-26T09:25:10.541228+00:00", "lvl": "INFO", "event": "request", "request_id": "6ea0bcf735664ff4ab367ff0ff863f9f", "method": "POST", "path": "/ask", "status": 422, "ms": 1.462}
+{"ts": "2026-11-26T09:25:10.545903+00:00", "lvl": "INFO", "event": "request", "request_id": "70409ede13e0440eaa1cbcff3e4aea9f", "method": "POST", "path": "/ask", "status": 422, "ms": 0.957}
+ok
+test_cost_settlement_releases_unused_reserve_and_is_idempotent (test_contract.RedisBehaviorTests.test_cost_settlement_releases_unused_reserve_and_is_idempotent) ... ok
+test_dependency_outage_keeps_health_but_blocks_ready_and_ask (test_contract.RedisBehaviorTests.test_dependency_outage_keeps_health_but_blocks_ready_and_ask) ... {"ts": "2026-11-26T09:25:10.558045+00:00", "lvl": "INFO", "event": "request", "request_id": "9d50c6ae30a34e01b5e8513c0b0cdcfa", "method": "GET", "path": "/health", "status": 200, "ms": 1.338}
+{"ts": "2026-11-26T09:25:10.562436+00:00", "lvl": "INFO", "event": "request", "request_id": "9f619c05e61e436088c112d0117e28fe", "method": "GET", "path": "/ready", "status": 503, "ms": 0.884}
+{"ts": "2026-11-26T09:25:10.566980+00:00", "lvl": "WARNING", "event": "redis_unavailable"}
+{"ts": "2026-11-26T09:25:10.568076+00:00", "lvl": "INFO", "event": "request", "request_id": "3ad3b1b56dfe4358b2f11152afc02935", "method": "POST", "path": "/ask", "status": 503, "ms": 2.76}
+ok
+test_json_logging_escapes_quotes_without_leaking_request (test_contract.RedisBehaviorTests.test_json_logging_escapes_quotes_without_leaking_request) ... ok
+test_parallel_budget_reservations_cannot_overspend (test_contract.RedisBehaviorTests.test_parallel_budget_reservations_cannot_overspend) ... ok
+test_parallel_rate_requests_share_one_limit (test_contract.RedisBehaviorTests.test_parallel_rate_requests_share_one_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.258s
+
+OK

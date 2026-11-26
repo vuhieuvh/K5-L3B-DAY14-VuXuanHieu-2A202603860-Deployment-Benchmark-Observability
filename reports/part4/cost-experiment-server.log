@@ -1,0 +1,16 @@
+INFO:     Started server process [3025]
+INFO:     Waiting for application startup.
+INFO:app:Security layer initialized
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8005 (Press CTRL+C to quit)
+INFO:     127.0.0.1:38794 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38804 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:cost_guard:Usage: user=student req=1 cost=$0.0000/1e-06
+INFO:     127.0.0.1:38806 - "POST /ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38812 - "POST /ask HTTP/1.1" 402 Payment Required
+INFO:     127.0.0.1:38818 - "GET /me/usage HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app:Shutdown
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3025]

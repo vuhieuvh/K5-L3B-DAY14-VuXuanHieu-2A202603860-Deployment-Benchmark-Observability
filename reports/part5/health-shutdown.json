@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-11-26T15:54:16.994747+07:00",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "develop": {
+    "port": 8006,
+    "health": {
+      "path": "/health",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:54:17 GMT",
+        "server": "uvicorn",
+        "content-length": "184",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "status": "ok",
+        "uptime_seconds": 0.3,
+        "version": "1.0.0",
+        "environment": "development",
+        "timestamp": "2026-11-26T08:54:17.842866+00:00",
+        "checks": {
+          "memory": {
+            "status": "ok",
+            "used_percent": 9.2
+          }
+        }
+      }
+    },
+    "ready": {
+      "path": "/ready",
+      "status": 200,
+      "headers": {
+        "date": "Thu, 26 Nov 2026 08:54:17 GMT",
+        "server": "uvicorn",
+        "content-length": "37",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "ready": true,
+        "in_flight_requests": 1
+      }
+    },
+    "shutdown": {
+      "signal": "SIGTERM",
+      "request_pending_at_signal": true,
+      "process_wchan_at_signal": "hrtimer_nanosleep",
+      "response": {
+        "status": 200,
+        "body": {
+          "answer": "Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận."
+        },
+        "elapsed_seconds": 3.027603
+      },
+      "exit_code": 0,
+      "seconds_from_signal_to_exit": 2.74157
+    }
+  }
+}
