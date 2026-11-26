@@ -1,0 +1,17 @@
+
+════════════════════════════════════════════════════════
+  LOAD TEST REPORT — http://127.0.0.1:8002
+════════════════════════════════════════════════════════
+  Requests     : 300  (concurrency=20)
+  Duration     : 6.44 s
+  Throughput   : 46.6 req/s
+  Error rate   : 1.33%   {'200': 296, '503': 4}
+  Total cost   : $0.010099
+  Latency (ms) : min=159.9  avg=355.8  max=1725.5
+                 p50=197.2  p90=1665.7  p95=1683.2  p99=1715.6
+────────────────────────────────────────────────────────
+  SLO p95 ≤ 500ms        : ❌ FAIL
+  SLO error rate ≤ 2.0%  : ✅ PASS
+════════════════════════════════════════════════════════
+
+💾 Đã lưu report: /mnt/e/ai_thuc_chien/day_14_thuc_hanh/K5-L3B-DAY14-VuXuanHieu-2A202603860-Deployment-Benchmark-Observability/reports/load_v2_slow_0.1.json

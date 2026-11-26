@@ -1,0 +1,5 @@
+{
+  "experiment": "chaos_AB",
+  "elapsed": 93.744,
+  "message": "At least two real alerts firing; capture Prometheus /alerts while load continues."
+}

@@ -1,6 +1,6 @@
 # Day 14 Lab — Mission Answers
 
-Phạm vi hiện tại: Part 1, 2, 4, 5 và CP5 Part 6 đã có nội dung/bằng chứng. Part 6 đạt script 12/12 local; Part 3/CP6 đã deploy Render, đủ bốn kiểm tra HTTP và ba ảnh minh chứng. Part 7 chưa thực hiện.
+Phạm vi hiện tại: Part 1–7 đã có nội dung và bằng chứng thực nghiệm. Part 6 đạt script 12/12 local; Part 3/CP6 đã deploy Render, đủ bốn kiểm tra HTTP và ba ảnh minh chứng. Part 7 có báo cáo [BENCHMARK_REPORT.md](BENCHMARK_REPORT.md), JSON/CSV và bốn ảnh observability. Đây là hồ sơ thực hiện, không phải điểm chính thức của Lab Coach.
 Áp dụng hướng dẫn K5 trong README.md và CHECKPOINTS.md; tiêu chí Part 1 theo INSTRUCTOR_GUIDE.md.
 
 ## Part 1: Localhost vs Production
@@ -663,4 +663,22 @@ Không deploy Railway ở CP6 này; chọn phương án so sánh config để đ
 
 - **Ảnh running CP6:** học viên cung cấp ảnh trang Deploys của Render, có day14-agent, URL public, Docker Free, branch main/commit 462991b, trạng thái Live và lịch sử Environment updated. AI lưu nguyên ảnh screenshots/running.png; ảnh không hiện key. Còn ảnh dashboard.png.
 
-- **Hoàn thiện ảnh CP6:** học viên gửi ảnh Overview Render có day14-agent Deployed và day14-redis Available, cùng Singapore, datastore hiển thị Valkey 8. AI lưu nguyên ảnh screenshots/dashboard.png; kiểm tra đủ ba PNG dashboard/running/test và cập nhật trạng thái hồ sơ. Chưa xác minh rotate key hoàn tất, không ghi nhận thay. Các thay đổi bằng chứng mới chưa được commit/push.
+- **Hoàn thiện ảnh CP6:** học viên gửi ảnh Overview Render có day14-agent Deployed và day14-redis Available, cùng Singapore, datastore hiển thị Valkey 8. AI lưu nguyên ảnh screenshots/dashboard.png; kiểm tra đủ ba PNG dashboard/running/test và cập nhật trạng thái hồ sơ. Chưa xác minh rotate key hoàn tất, không ghi nhận thay. Bộ bằng chứng CP6 đã commit/push ở ab07e7c.
+
+### Part 7 / CP7–CP8 — 26/11/2026 (GMT+7)
+
+- **Yêu cầu:** học viên yêu cầu hoàn thiện các phần còn lại, giữ số đo thực tế và chuẩn bị minh chứng.
+- **AI thực hiện CP7:** chạy load test nguyên bản ở bốn mức concurrency, ba slow rate; eval v1/v2 trước sửa; bổ sung tri thức JWT/HPA trong KNOWLEDGE_BASE của develop và production, khởi động lại và eval v2 với baseline. Không sửa golden dataset, công cụ eval/load hoặc script chấm Part 6.
+- **Kết quả CP7:** v1 1/23, v2 trước sửa 21/23, v2 sau sửa 23/23, quality gate exit 0 và không regression. Đối chứng v1 với baseline v2 bị chặn bằng exit 1. Concurrency 50/100 không đạt SLO, được giữ nguyên trong báo cáo.
+- **AI thực hiện CP8:** chạy stack local riêng, sửa PYTHONUSERBASE để Docker tìm được dependency đã cài theo user; đổi các host port sang loopback tránh xung đột. Chạy Locust headless 100 user, ramp 10/s trong 120 giây với đúng 1 và 3 agent; dùng --no-deps và kiểm tra container IDs. Giữ CSV cả lỗi 503 mock; lưu riêng lần thử sai số replica và loại khỏi bảng.
+- **Quan sát thực:** p95 /ask 320→240 ms, RPS khoảng 59,9 ở cả hai mức; ba alert cùng firing trên Prometheus. Chạy AB kết hợp lỗi/chậm, C model lớn, D pause và E v1; ghi rõ alert có lịch sử kéo sang pha sau. Promtool SUCCESS. Trace chậm/lỗi có raw OTLP, ảnh UI thật và log trùng trace_id; tổng hợp tại BENCHMARK_REPORT.md.
+- **Xử lý thu bằng chứng:** runner ban đầu dùng API Jaeger cũ bị 404 ở hậu xử lý; không chạy lại phép đo để chọn kết quả. Chuyển helper sang API v3, giữ cặp trace/log đã thu và các ảnh tương ứng. Lưu log qua nhiều thế hệ container trước khi dọn stack.
+- **Ảnh:** screenshots/grafana-dashboard.png, jaeger-slow-trace.png, jaeger-error-trace.png, prometheus-alert-firing.png. Ảnh lấy từ browser thật; JPEG gốc giữ kèm, chuyển PNG chỉ đổi định dạng.
+- **Giới hạn:** mọi LLM/cost/token là mock, client/server cùng máy, dữ liệu có randomness; không gửi tải hay chaos lên Render. Không tuyên bố benchmark chứng minh capacity cloud hoặc chi phí thật. Chưa xác nhận học viên tự chạy lại hoặc giải thích được toàn bộ phần AI làm; cần đọc báo cáo và code trước khi nộp.
+
+## Đối chiếu hồ sơ nộp bài
+
+- Part 1–5 và checklist Part 6: trong file này; triển khai public và lệnh kiểm tra ở [DEPLOYMENT.md](DEPLOYMENT.md).
+- Part 7: [BENCHMARK_REPORT.md](BENCHMARK_REPORT.md), 10 JSON yêu cầu trong reports/ và develop/reports/, CSV scale_1/scale_3 trong benchmark-results/ và production/benchmark-results/.
+- Có đủ 7 PNG minh chứng trong screenshots/. Script chấm/golden dataset được giữ nguyên.
+- Điểm do Lab Coach chấm theo RUBRIC.md; không coi các kết quả PASS của công cụ là điểm chính thức. Học viên nộp link repo trên LMS và cần nắm nội dung đã khai báo AI hỗ trợ.

@@ -1,0 +1,9 @@
+scale 1: 7139 requests, 73 failures, RPS=59.908353293223406, p95=320 ms
+scale 3: 7127 requests, 74 failures, RPS=59.87617768285838, p95=240 ms
+slow trace/log verified: fbf52198aa4466503b8a991cdf2c719f
+error trace/log verified: a95370b20feed9bcc5f3df3f894d385e
+chaos AB: initially firing=['LLMCostBurnRateHigh']; observed=['AgentHighErrorRate', 'AgentHighLatencyP95', 'LLMCostBurnRateHigh']
+chaos C: initially firing=['AgentHighErrorRate', 'AgentHighLatencyP95', 'LLMCostBurnRateHigh']; observed=['AgentHighErrorRate', 'AgentHighLatencyP95', 'LLMCostBurnRateHigh']
+chaos D: initially firing=['LLMCostBurnRateHigh']; observed=['AgentInstanceDown', 'LLMCostBurnRateHigh']
+chaos E: initially firing=['AgentInstanceDown', 'LLMCostBurnRateHigh']; observed=['LLMCostBurnRateHigh']
+PASS: 10 JSON pairs, eval 23/23 + regression gate, scale CSVs, 7 PNGs, trace/log pairs, promtool, 3 firing alerts, four chaos records

@@ -1,0 +1,324 @@
+{
+  "result": {
+    "resourceSpans": [
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "agent.version",
+              "value": {
+                "stringValue": "v2"
+              }
+            },
+            {
+              "key": "deployment.environment.name",
+              "value": {
+                "stringValue": "lab"
+              }
+            },
+            {
+              "key": "service.instance.id",
+              "value": {
+                "stringValue": "90e0c064d358"
+              }
+            },
+            {
+              "key": "service.name",
+              "value": {
+                "stringValue": "observable-agent"
+              }
+            },
+            {
+              "key": "service.version",
+              "value": {
+                "stringValue": "1.0.0"
+              }
+            },
+            {
+              "key": "telemetry.sdk.language",
+              "value": {
+                "stringValue": "python"
+              }
+            },
+            {
+              "key": "telemetry.sdk.name",
+              "value": {
+                "stringValue": "opentelemetry"
+              }
+            },
+            {
+              "key": "telemetry.sdk.version",
+              "value": {
+                "stringValue": "1.45.2"
+              }
+            }
+          ]
+        },
+        "scopeSpans": [
+          {
+            "scope": {
+              "name": "agent"
+            },
+            "spans": [
+              {
+                "traceId": "fbf52198aa4466503b8a991cdf2c719f",
+                "spanId": "d076cb7a5877325f",
+                "parentSpanId": "19768a086f451f4e",
+                "flags": 256,
+                "name": "agent.retrieve_context",
+                "kind": 1,
+                "startTimeUnixNano": "1795689946445655831",
+                "endTimeUnixNano": "1795689946460979275",
+                "attributes": [
+                  {
+                    "key": "retrieval.documents",
+                    "value": {
+                      "intValue": "1"
+                    }
+                  }
+                ],
+                "status": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "agent.version",
+              "value": {
+                "stringValue": "v2"
+              }
+            },
+            {
+              "key": "deployment.environment.name",
+              "value": {
+                "stringValue": "lab"
+              }
+            },
+            {
+              "key": "service.instance.id",
+              "value": {
+                "stringValue": "90e0c064d358"
+              }
+            },
+            {
+              "key": "service.name",
+              "value": {
+                "stringValue": "observable-agent"
+              }
+            },
+            {
+              "key": "service.version",
+              "value": {
+                "stringValue": "1.0.0"
+              }
+            },
+            {
+              "key": "telemetry.sdk.language",
+              "value": {
+                "stringValue": "python"
+              }
+            },
+            {
+              "key": "telemetry.sdk.name",
+              "value": {
+                "stringValue": "opentelemetry"
+              }
+            },
+            {
+              "key": "telemetry.sdk.version",
+              "value": {
+                "stringValue": "1.45.2"
+              }
+            }
+          ]
+        },
+        "scopeSpans": [
+          {
+            "scope": {
+              "name": "agent"
+            },
+            "spans": [
+              {
+                "traceId": "fbf52198aa4466503b8a991cdf2c719f",
+                "spanId": "48d4fa30b2c7d858",
+                "parentSpanId": "19768a086f451f4e",
+                "flags": 256,
+                "name": "chat mock-llm-large",
+                "kind": 1,
+                "startTimeUnixNano": "1795689946461101935",
+                "endTimeUnixNano": "1795689948447023584",
+                "attributes": [
+                  {
+                    "key": "gen_ai.operation.name",
+                    "value": {
+                      "stringValue": "chat"
+                    }
+                  },
+                  {
+                    "key": "gen_ai.provider.name",
+                    "value": {
+                      "stringValue": "mock"
+                    }
+                  },
+                  {
+                    "key": "gen_ai.request.model",
+                    "value": {
+                      "stringValue": "mock-llm-large"
+                    }
+                  },
+                  {
+                    "key": "gen_ai.usage.input_tokens",
+                    "value": {
+                      "intValue": "95"
+                    }
+                  },
+                  {
+                    "key": "gen_ai.usage.output_tokens",
+                    "value": {
+                      "intValue": "55"
+                    }
+                  },
+                  {
+                    "key": "llm.cost_usd",
+                    "value": {
+                      "doubleValue": 0.0007875
+                    }
+                  }
+                ],
+                "status": {}
+              },
+              {
+                "traceId": "fbf52198aa4466503b8a991cdf2c719f",
+                "spanId": "19768a086f451f4e",
+                "parentSpanId": "454ac03285c5ce62",
+                "flags": 256,
+                "name": "agent.run",
+                "kind": 1,
+                "startTimeUnixNano": "1795689946445630454",
+                "endTimeUnixNano": "1795689948447083028",
+                "attributes": [
+                  {
+                    "key": "agent.question.length",
+                    "value": {
+                      "intValue": "54"
+                    }
+                  },
+                  {
+                    "key": "agent.version",
+                    "value": {
+                      "stringValue": "v2"
+                    }
+                  }
+                ],
+                "status": {}
+              }
+            ]
+          },
+          {
+            "scope": {
+              "name": "opentelemetry.instrumentation.fastapi",
+              "version": "0.66b2"
+            },
+            "spans": [
+              {
+                "traceId": "fbf52198aa4466503b8a991cdf2c719f",
+                "spanId": "454ac03285c5ce62",
+                "flags": 256,
+                "name": "POST /ask",
+                "kind": 2,
+                "startTimeUnixNano": "1795689946444850077",
+                "endTimeUnixNano": "1795689948447808940",
+                "attributes": [
+                  {
+                    "key": "http.flavor",
+                    "value": {
+                      "stringValue": "1.1"
+                    }
+                  },
+                  {
+                    "key": "http.host",
+                    "value": {
+                      "stringValue": "172.18.0.8:8000"
+                    }
+                  },
+                  {
+                    "key": "http.method",
+                    "value": {
+                      "stringValue": "POST"
+                    }
+                  },
+                  {
+                    "key": "http.route",
+                    "value": {
+                      "stringValue": "/ask"
+                    }
+                  },
+                  {
+                    "key": "http.scheme",
+                    "value": {
+                      "stringValue": "http"
+                    }
+                  },
+                  {
+                    "key": "http.server_name",
+                    "value": {
+                      "stringValue": "nginx"
+                    }
+                  },
+                  {
+                    "key": "http.status_code",
+                    "value": {
+                      "intValue": "200"
+                    }
+                  },
+                  {
+                    "key": "http.target",
+                    "value": {
+                      "stringValue": "/ask"
+                    }
+                  },
+                  {
+                    "key": "http.url",
+                    "value": {
+                      "stringValue": "http://nginx/ask"
+                    }
+                  },
+                  {
+                    "key": "http.user_agent",
+                    "value": {
+                      "stringValue": "python-requests/2.34.2"
+                    }
+                  },
+                  {
+                    "key": "net.host.port",
+                    "value": {
+                      "intValue": "8000"
+                    }
+                  },
+                  {
+                    "key": "net.peer.ip",
+                    "value": {
+                      "stringValue": "172.18.0.6"
+                    }
+                  },
+                  {
+                    "key": "net.peer.port",
+                    "value": {
+                      "intValue": "35516"
+                    }
+                  }
+                ],
+                "status": {}
+              }
+            ],
+            "schemaUrl": "https://opentelemetry.io/schemas/1.11.0"
+          }
+        ]
+      }
+    ]
+  }
+}

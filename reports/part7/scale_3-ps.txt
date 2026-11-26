@@ -1,0 +1,9 @@
+NAME                                  IMAGE                          COMMAND                  SERVICE      CREATED         STATUS                   PORTS
+k5-day14-observability-agent-1        k5-day14-observability-agent   "uvicorn app.main:ap…"   agent        7 minutes ago   Up 7 minutes (healthy)   8000/tcp
+k5-day14-observability-agent-2        k5-day14-observability-agent   "uvicorn app.main:ap…"   agent        2 minutes ago   Up 2 minutes (healthy)   8000/tcp
+k5-day14-observability-agent-3        k5-day14-observability-agent   "uvicorn app.main:ap…"   agent        2 minutes ago   Up 2 minutes (healthy)   8000/tcp
+k5-day14-observability-grafana-1      grafana/grafana:13.2.4         "/run.sh"                grafana      9 minutes ago   Up 9 minutes             127.0.0.1:13000->3000/tcp
+k5-day14-observability-jaeger-1       jaegertracing/jaeger:2.23.0    "/cmd/jaeger/jaeger-…"   jaeger       9 minutes ago   Up 9 minutes             127.0.0.1:16686->16686/tcp, 127.0.0.1:14318->4318/tcp
+k5-day14-observability-locust-1       locustio/locust:2.47.0         "locust -f /mnt/locu…"   locust       9 minutes ago   Up 9 minutes             127.0.0.1:18089->8089/tcp
+k5-day14-observability-nginx-1        nginx:1.28-alpine              "/docker-entrypoint.…"   nginx        9 minutes ago   Up 9 minutes             127.0.0.1:18087->80/tcp
+k5-day14-observability-prometheus-1   prom/prometheus:v3.16.0        "/bin/prometheus --c…"   prometheus   9 minutes ago   Up 9 minutes             127.0.0.1:19090->9090/tcp

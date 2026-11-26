@@ -48,7 +48,7 @@ services:
   nginx:
     image: nginx:1.28-alpine
     ports:
-      - "8080:80"
+      - "127.0.0.1:18087:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
@@ -65,7 +65,7 @@ services:
       - --storage.tsdb.retention.time=2d
       - --web.enable-lifecycle          # cho phép reload config: curl -X POST localhost:9090/-/reload
     ports:
-      - "9090:9090"
+      - "127.0.0.1:19090:9090"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
@@ -77,7 +77,7 @@ services:
   grafana:
     image: grafana/grafana:13.2.4
     ports:
-      - "3000:3000"
+      - "127.0.0.1:13000:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
@@ -97,8 +97,8 @@ services:
   jaeger:
     image: jaegertracing/jaeger:2.23.0
     ports:
-      - "16686:16686"   # Jaeger UI
-      - "4318:4318"     # OTLP/HTTP (cho phép app chạy ngoài Docker gửi trace vào)
+      - "127.0.0.1:16686:16686"   # Jaeger UI
+      - "127.0.0.1:14318:4318"     # OTLP/HTTP (cho phép app chạy ngoài Docker gửi trace vào)
     networks: [obs_net]
 
   # ──────────────────────────────────────
@@ -108,7 +108,7 @@ services:
     image: locustio/locust:2.47.0
     command: -f /mnt/locust/locustfile.py --host http://nginx
     ports:
-      - "8089:8089"
+      - "127.0.0.1:18089:8089"
     environment:
       - AGENT_API_KEY=${AGENT_API_KEY:-day14-lab-key}
     volumes:

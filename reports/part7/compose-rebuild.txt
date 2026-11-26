@@ -1,0 +1,77 @@
+ Image k5-day14-observability-agent Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 796B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.43kB 0.1s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 1.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 156B 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [builder 1/4] FROM docker.io/library/python:3.11-slim@sha256:61e01f72680f86a5279ad510818ab7b2ee9f049822589d4e34e33e044360356c
+#6 resolve docker.io/library/python:3.11-slim@sha256:61e01f72680f86a5279ad510818ab7b2ee9f049822589d4e34e33e044360356c 0.0s done
+#6 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 289B 0.1s done
+#5 DONE 0.1s
+
+#7 [builder 4/4] RUN pip install --no-cache-dir --user -r requirements.txt
+#7 CACHED
+
+#8 [runtime 6/7] COPY utils/ ./utils/
+#8 CACHED
+
+#9 [runtime 4/7] COPY --from=builder /root/.local /home/agent/.local
+#9 CACHED
+
+#10 [runtime 5/7] COPY app/ ./app/
+#10 CACHED
+
+#11 [runtime 2/7] RUN groupadd -r agent && useradd -r -g agent -d /app agent
+#11 CACHED
+
+#12 [builder 3/4] COPY requirements.txt .
+#12 CACHED
+
+#13 [runtime 3/7] WORKDIR /app
+#13 CACHED
+
+#14 [builder 2/4] WORKDIR /build
+#14 CACHED
+
+#15 [runtime 7/7] RUN chown -R agent:agent /app
+#15 CACHED
+
+#16 exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:1415e34462d237149b62212bd398f5d9f49427a20b33a36c12237d43d63397f8 0.0s done
+#16 exporting config sha256:e820d8cddb8ebcf1c0ebfd8bb2496ac72b4fc50fdfbfe6cda247a76592998169 0.0s done
+#16 exporting attestation manifest sha256:d956c7545030f4af14662d8ad50de24c4339d88d71dd242956e645673ff9432c 0.0s done
+#16 exporting manifest list sha256:c3fedcbd1287d7be0f5d58af92e68d70d7dce4203a1daac76184312ca753af83 0.0s done
+#16 naming to docker.io/library/k5-day14-observability-agent:latest
+#16 naming to docker.io/library/k5-day14-observability-agent:latest done
+#16 unpacking to docker.io/library/k5-day14-observability-agent:latest 0.0s done
+#16 DONE 0.3s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image k5-day14-observability-agent Built 
+ Container k5-day14-observability-prometheus-1 Running 
+ Container k5-day14-observability-grafana-1 Running 
+ Container k5-day14-observability-jaeger-1 Running 
+ Container k5-day14-observability-locust-1 Running 
+ Container k5-day14-observability-nginx-1 Running 
+ Container k5-day14-observability-agent-1 Recreate 
+ Container k5-day14-observability-agent-1 Recreated 
+ Container k5-day14-observability-agent-1 Starting 
+ Container k5-day14-observability-agent-1 Started 

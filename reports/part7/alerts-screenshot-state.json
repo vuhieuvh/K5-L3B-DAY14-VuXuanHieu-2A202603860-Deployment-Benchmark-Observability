@@ -1,0 +1,46 @@
+{
+  "status": "success",
+  "data": {
+    "alerts": [
+      {
+        "labels": {
+          "alertname": "AgentHighErrorRate",
+          "severity": "critical"
+        },
+        "annotations": {
+          "description": "Error rate hi\u1ec7n t\u1ea1i: 20.46% (SLO: < 5%)",
+          "summary": "Error rate /ask v\u01b0\u1ee3t 5%"
+        },
+        "state": "firing",
+        "activeAt": "2026-11-26T10:41:32.401817116Z",
+        "value": "2.045728038507822e-01"
+      },
+      {
+        "labels": {
+          "alertname": "AgentHighLatencyP95",
+          "severity": "warning"
+        },
+        "annotations": {
+          "description": "p95 hi\u1ec7n t\u1ea1i: 1.906s (SLO: < 1s)",
+          "summary": "p95 latency /ask v\u01b0\u1ee3t 1 gi\u00e2y"
+        },
+        "state": "firing",
+        "activeAt": "2026-11-26T10:41:32.401817116Z",
+        "value": "1.905995475113122e+00"
+      },
+      {
+        "labels": {
+          "alertname": "LLMCostBurnRateHigh",
+          "severity": "warning"
+        },
+        "annotations": {
+          "description": "T\u1ed1c \u0111\u1ed9 chi ti\u00eau hi\u1ec7n t\u1ea1i: $4.02/gi\u1edd",
+          "summary": "Chi ph\u00ed LLM \u0111ang v\u01b0\u1ee3t $2/gi\u1edd"
+        },
+        "state": "firing",
+        "activeAt": "2026-11-26T10:35:32.571501534Z",
+        "value": "4.017015890344295e+00"
+      }
+    ]
+  }
+}

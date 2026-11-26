@@ -1,0 +1,1 @@
+Initial attempt used2 actual agent replicas because compose run started dependencies. Excluded from1-vs3 results. Retained for audit; corrected runner uses --no-deps and checks actual agent container count.

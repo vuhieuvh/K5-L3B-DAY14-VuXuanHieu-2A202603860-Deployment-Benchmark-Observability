@@ -1,0 +1,355 @@
+{
+  "changes": {
+    "AGENT_VERSION": "v1"
+  },
+  "duration_s": 80,
+  "users": 30,
+  "initial_firing": [
+    "AgentInstanceDown",
+    "LLMCostBurnRateHigh"
+  ],
+  "first_observed_firing_seconds": {
+    "LLMCostBurnRateHigh": 11.916
+  },
+  "timing_origin": "before compose up; for pause experiment, immediately before load after pause",
+  "observations": [
+    {
+      "seconds_since_config_start": 11.916,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "AgentInstanceDown",
+            "instance": "172.18.0.9:8000",
+            "job": "agent",
+            "severity": "critical"
+          },
+          "annotations": {
+            "description": "Prometheus không gọi được /metrics của 172.18.0.9:8000 trong 30s",
+            "summary": "Instance agent 172.18.0.9:8000 không scrape được"
+          },
+          "state": "pending",
+          "activeAt": "2026-11-26T10:48:57.401817116Z",
+          "value": "0e+00"
+        },
+        {
+          "labels": {
+            "alertname": "AgentInstanceDown",
+            "instance": "172.18.0.8:8000",
+            "job": "agent",
+            "severity": "critical"
+          },
+          "annotations": {
+            "description": "Prometheus không gọi được /metrics của 172.18.0.8:8000 trong 30s",
+            "summary": "Instance agent 172.18.0.8:8000 không scrape được"
+          },
+          "state": "pending",
+          "activeAt": "2026-11-26T10:48:57.401817116Z",
+          "value": "0e+00"
+        },
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.50/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.949989579181588e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 16.92,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.46/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9461679324503976e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 21.925,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.43/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9430464279131442e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 26.93,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.42/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9424350380826354e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 31.936,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.43/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9434284451171184e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 36.939,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.46/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9456162774887463e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 41.942,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.49/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9486547432450056e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 46.946,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $19.03/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.9033819477315433e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 51.95,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $18.48/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.848111326478064e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 56.954,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $17.93/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.7930127710738763e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 61.957,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $17.33/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.7327616796221424e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 66.962,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $16.77/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.677186536684597e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 71.967,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $16.23/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.6225309608331823e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 76.971,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $15.65/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.565210054728699e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 81.974,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $15.04/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.5040025229014608e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 86.979,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $14.51/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.450797775930659e+01"
+        }
+      ]
+    },
+    {
+      "seconds_since_config_start": 91.983,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "LLMCostBurnRateHigh",
+            "severity": "warning"
+          },
+          "annotations": {
+            "description": "Tốc độ chi tiêu hiện tại: $13.92/giờ",
+            "summary": "Chi phí LLM đang vượt $2/giờ"
+          },
+          "state": "firing",
+          "activeAt": "2026-11-26T10:35:32.571501534Z",
+          "value": "1.3918347446009625e+01"
+        }
+      ]
+    }
+  ],
+  "locust_exit_code": 1,
+  "paused_container": null
+}
