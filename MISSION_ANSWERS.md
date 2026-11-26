@@ -1,6 +1,6 @@
 # Day 14 Lab — Mission Answers
 
-Phạm vi hiện tại: Part 1, 2, 4, 5 và CP5 Part 6 đã có nội dung/bằng chứng. Part 6 đạt script 12/12 local; Part 3/CP6 deploy cloud và Part 7 chưa thực hiện.
+Phạm vi hiện tại: Part 1, 2, 4, 5 và CP5 Part 6 đã có nội dung/bằng chứng. Part 6 đạt script 12/12 local; Part 3/CP6 đã deploy Render, đủ bốn kiểm tra HTTP và ba ảnh minh chứng. Part 7 chưa thực hiện.
 Áp dụng hướng dẫn K5 trong README.md và CHECKPOINTS.md; tiêu chí Part 1 theo INSTRUCTOR_GUIDE.md.
 
 ## Part 1: Localhost vs Production
@@ -546,7 +546,7 @@ Script chấm ghi kích thước làm tròn 238 MB nhưng phép chia thực tế
 ================================================================
 ```
 
-**Phân biệt với CP6:** tiêu chí Public URL ready của script kiểm tra file cấu hình. **Chưa deploy lên Render, chưa có URL public, chưa đặt secret trên Render.** Chưa chốt đủ 60/60 Part 6 vì nhóm Deployment còn cần bằng chứng cloud thật. Render Blueprint đã chuẩn bị; free Key Value không đảm bảo persistence qua restart của dịch vụ theo tài liệu nền tảng, cần đối chiếu khi triển khai.
+**Phân biệt với CP6:** tiêu chí Public URL ready của script kiểm tra file cấu hình. Khi kết thúc CP5 mới có kết quả local; hiện CP6 đã deploy Render tại https://day14-agent-mi52.onrender.com, có HTTP cloud 200/200/401/200 và đủ dashboard/running/test. Chi tiết ở Part 3 và DEPLOYMENT.md. Free Key Value không đảm bảo persistence qua restart dịch vụ; không suy ra độ bền cloud từ volume Redis local.
 
 ### Chạy lại trong Ubuntu
 
@@ -557,6 +557,38 @@ python check_production_ready.py
 ```
 
 Grader tự tạo/dọn Redis tạm nếu chưa cung cấp REDIS_URL. Integration unittest bổ sung cần Redis test riêng ở 127.0.0.1:18086/15 và `requirements-dev.txt`. Script Compose nằm ở `scripts/run_part6_compose.py`, dùng project k5-day14-part6, port host 18006, tự dọn container/network nhưng giữ volume Redis. Không chạy down -v nếu muốn giữ state local.
+
+## Part 3: Cloud Deployment — CP6
+
+### Nền tảng chính: Render (Exercise 3.2)
+
+Học viên tạo Blueprint day14-vuxuanhieu từ repo fork, branch main, Blueprint path `06-lab-complete/render.yaml`, sync commit 462991b. Ảnh học viên gửi cho thấy tạo web day14-agent và Key Value day14-redis thành công. URL học viên cung cấp: **https://day14-agent-mi52.onrender.com**.
+
+AI đã gọi trực tiếp qua HTTPS và lưu [public-checks.json](reports/part3/public-checks.json): GET /health 200, GET /ready 200, POST /ask không key 401. **Đã gọi /ask bằng key hợp lệ trả HTTP200**; đã đủ bốn trường hợp HTTP CP6. Bằng chứng authenticated ở reports/part3/ask-authenticated.json và ask-authenticated.txt; đã có đủ ảnh screenshots/dashboard.png, running.png, test.png theo SUBMISSION.md. Không lưu giá trị key vào Git. Key từng được học viên chia sẻ trong chat; cần dùng key mới riêng tư trên Render và chưa xác minh giá trị hiện hành đã đổi.
+
+### So sánh Railway và Render (Exercise 3.1/3.2)
+
+Đối chiếu các ví dụ trong `03-cloud-deployment/` với Blueprint Part 6 đã dùng:
+
+| Nội dung | Railway TOML mẫu | Render YAML đã dùng cho Part 6 |
+|---|---|---|
+| Cấu trúc | Các bảng [build], [deploy] mô tả cấu hình deployment một service | services liệt kê web Docker và Key Value, cấu hình liên kết trong một Blueprint |
+| Build | Mẫu Part 3 dùng builder NIXPACKS; có thể chọn Dockerfile theo nền tảng | runtime docker, Dockerfile/context thuộc rootDir 06-lab-complete |
+| Start | Mẫu override startCommand với uvicorn app:app và $PORT | Dùng CMD của Dockerfile, app.main:app, PORT động |
+| Probe | healthcheckPath /health, timeout và restart policy trong file mẫu | healthCheckPath /health trong web service |
+| Secrets/Redis | Mẫu đặt biến qua dashboard/CLI, không khai báo một Redis trong TOML đó | generateValue cho key, fromService connectionString từ Key Value; không ghi secret literal |
+
+Không deploy Railway ở CP6 này; chọn phương án so sánh config để đáp ứng mục nền tảng còn lại trong rubric K5. Đây là so sánh các file cụ thể, không kết luận Railway không có khả năng quản lý nhiều service hoặc secret.
+
+### Exercise 3.3: Pipeline Cloud Run (đọc file, không deploy)
+
+1. `cloudbuild.yaml` khai báo step test: cài requirements/pytest và chạy tests.
+2. Step build chờ test, tạo image với tag COMMIT_SHA và latest; step push đẩy các tag lên registry.
+3. Step deploy chờ push rồi dùng gcloud run deploy image theo commit, đặt region, giới hạn instance/CPU/RAM/timeout, env và secret từ Secret Manager.
+4. `service.yaml` là cấu hình service thay thế qua gcloud run services replace: mô tả image, port, concurrency, scaling, resources, env/secrets, liveness/startup probe. Pipeline hiện không tự apply service.yaml.
+5. Lưu ý khi đọc code: bash test step không bật set -e và có echo sau pytest, nên cần sửa fail-fast trước khi dùng thật để lỗi pytest không bị che. Ở đây chỉ phân tích file, không nhận đã chạy CI hoặc deploy GCP.
+
+Đã có đủ bốn kiểm tra HTTP cloud, gồm authenticated request 200, và ba ảnh yêu cầu. Dashboard xác nhận agent Deployed, datastore Available (runtime Valkey 8), cùng Singapore. Bằng chứng ảnh không hiển thị key. Chưa xác minh key hiện tại khác các key đã chia sẻ; cần giữ key mới riêng tư, không commit.
 
 ## AI log
 
@@ -618,3 +650,17 @@ Grader tự tạo/dọn Redis tạm nếu chưa cung cấp REDIS_URL. Integratio
 
 - **Review độc lập Part 6:** reviewer đọc app/tests/Docker/Compose/Render, không phát hiện critical/important ảnh hưởng hợp đồng lab. Minor ghi nhận: unexpected error có thể thiếu request JSON log/X-Request-ID và Uvicorn có thể ghi traceback; cần rà soát trước khi thêm provider thật. Reservation crash còn giữ đến TTL là tradeoff fail closed đã ghi. Không tuyên bố đã sửa hai giới hạn này.
 - **Tài liệu:** cập nhật hướng dẫn chạy trong 06-lab-complete/README.md; tạo DEPLOYMENT.md trạng thái chưa deploy để chuẩn bị CP6. Không tạo URL giả, không push GitHub hoặc tạo tài nguyên cloud trong CP5.
+
+### Part 3 / CP6 — triển khai Render, 26/11/2026 (GMT+7)
+
+- Học viên tự thao tác GitHub App authorization và tạo Blueprint; AI đã commit/push theo yêu cầu trước đó (462991b), hướng dẫn chọn repo/main/Blueprint Path, không tự đọc cloud key.
+- Sau khi học viên gửi URL, AI trực tiếp kiểm tra HTTPS: health200, ready200, ask thiếu key401, lưu reports/part3/public-checks.json và cập nhật DEPLOYMENT.md.
+- AI bổ sung so sánh config Railway/Render và phân tích pipeline Cloud Run từ file mẫu; chưa deploy Railway/GCP hoặc chạy pipeline. Còn chờ học viên kiểm tra ask bằng key hợp lệ và ảnh cloud, không bịa kết quả.
+
+- **Cập nhật authenticated cloud:** học viên cung cấp API key trong chat và yêu cầu AI thao tác hộ. AI gọi POST /ask thật trên Render, HTTP200 và câu trả lời deployment; lưu response không có key vào reports/part3/ask-authenticated.json/txt. Chưa thay key trên Render; cần học viên rotate vì key đã được chia sẻ trong chat. Không coi chi phí mock trong response là hóa đơn LLM thật.
+
+- **Ảnh CP6:** học viên cung cấp ảnh terminal của lần POST /ask thật trên Render lúc 10:18:27 GMT, HTTP/2 200 và JSON response; AI lưu nguyên ảnh vào screenshots/test.png, không chỉnh sửa. Không có giá trị key trong ảnh này. Chưa xác nhận key đã đổi khỏi các giá trị từng chia sẻ; còn chờ dashboard.png và running.png.
+
+- **Ảnh running CP6:** học viên cung cấp ảnh trang Deploys của Render, có day14-agent, URL public, Docker Free, branch main/commit 462991b, trạng thái Live và lịch sử Environment updated. AI lưu nguyên ảnh screenshots/running.png; ảnh không hiện key. Còn ảnh dashboard.png.
+
+- **Hoàn thiện ảnh CP6:** học viên gửi ảnh Overview Render có day14-agent Deployed và day14-redis Available, cùng Singapore, datastore hiển thị Valkey 8. AI lưu nguyên ảnh screenshots/dashboard.png; kiểm tra đủ ba PNG dashboard/running/test và cập nhật trạng thái hồ sơ. Chưa xác minh rotate key hoàn tất, không ghi nhận thay. Các thay đổi bằng chứng mới chưa được commit/push.

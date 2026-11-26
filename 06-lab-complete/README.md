@@ -1,6 +1,6 @@
 # Part 6 — Final Project: Production-ready AI Agent
 
-> **Trạng thái bản fork — CP5 ngày 26/11/2026:** đã hoàn thiện các module app và cấu hình Docker/Render. Script chấm nguyên bản đạt **PASS 12/12, 42/42 checks** trên Ubuntu WSL2. Đây là kết quả local; **chưa deploy Render, chưa có URL public**. Bằng chứng: [production-check.txt](../reports/part6/production-check.txt), [Compose smoke](../reports/part6/compose-results.json), [bài làm và AI log](../MISSION_ANSWERS.md). Phần mô tả bản khung/TODO bên dưới là đề gốc.
+> **Trạng thái bản fork — CP5 ngày 26/11/2026:** đã hoàn thiện các module app và cấu hình Docker/Render. Script chấm nguyên bản đạt **PASS 12/12, 42/42 checks** trên Ubuntu WSL2. Đây là kết quả local; **CP6 sau đó đã deploy Render tại https://day14-agent-mi52.onrender.com**, có đủ bốn HTTP checks và ba ảnh trong screenshots/. Bằng chứng: [production-check.txt](../reports/part6/production-check.txt), [Compose smoke](../reports/part6/compose-results.json), [bài làm và AI log](../MISSION_ANSWERS.md). Phần mô tả bản khung/TODO bên dưới là đề gốc.
 
 ## Chạy bản đã hoàn thiện
 
@@ -38,7 +38,7 @@ Tests bổ sung (ngoài grader): cài `requirements-dev.txt`; chạy Redis tạm
 - Process chết sau khi reserve budget có thể giữ khoản dự trữ đến khi key hết hạn: an toàn ngân sách nhưng giảm khả dụng. Chưa có job đối soát reservation bị bỏ dở.
 - Unexpected exception có thể thiếu request log/X-Request-ID; Uvicorn có thể ghi traceback riêng. Trước khi thay mock bằng provider thật, cần rà soát đường lỗi và lọc thông tin nhạy cảm trong exception log.
 - Không có tính năng conversation history trong Part 6 này, không bắt buộc tính điểm.
-- Cấu hình Render và cách làm tiếp ở [DEPLOYMENT.md](../DEPLOYMENT.md); chưa tạo service cloud. Tài liệu Blueprint tham chiếu: [Render](https://render.com/docs/blueprint-spec).
+- Cấu hình Render và cách làm tiếp ở [DEPLOYMENT.md](../DEPLOYMENT.md); đã có service cloud và URL public, xem trạng thái cập nhật trong DEPLOYMENT.md. Tài liệu Blueprint tham chiếu: [Render](https://render.com/docs/blueprint-spec).
 
 ---
 

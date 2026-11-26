@@ -1,0 +1,15 @@
+HTTP 200
+Date: Thu, 26 Nov 2026 09:59:45 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: close
+rndr-id: 269aef50-e84e-4070
+Server: cloudflare
+vary: Accept-Encoding
+x-render-origin-server: uvicorn
+x-request-id: 544273325a60415491036d182df19077
+cf-cache-status: DYNAMIC
+CF-RAY: a6080acdf8910946-HKG
+alt-svc: h3=":443"; ma=86400
+
+{"question":"What is deployment?","answer":"Deployment là quá trình đưa code từ máy bạn lên server để người khác dùng được.","usage":{"cost_usd":2.01e-05,"simulated":true}}

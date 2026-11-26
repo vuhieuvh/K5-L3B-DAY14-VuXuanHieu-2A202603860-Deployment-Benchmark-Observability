@@ -1,0 +1,15 @@
+{
+  "url": "https://day14-agent-mi52.onrender.com/ask",
+  "method": "POST",
+  "checked_at": "2026-11-26T16:59:45.683631+07:00",
+  "status": 200,
+  "body": {
+    "question": "What is deployment?",
+    "answer": "Deployment là quá trình đưa code từ máy bạn lên server để người khác dùng được.",
+    "usage": {
+      "cost_usd": 2.01e-05,
+      "simulated": true
+    }
+  },
+  "note": "Authenticated with student-provided API key; key omitted from evidence."
+}

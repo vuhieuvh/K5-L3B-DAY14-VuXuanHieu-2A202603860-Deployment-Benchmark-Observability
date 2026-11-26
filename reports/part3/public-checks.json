@@ -1,0 +1,71 @@
+{
+  "base_url": "https://day14-agent-mi52.onrender.com",
+  "checked_at": "2026-11-26T16:52:27.569308+07:00",
+  "results": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "body": "{\"status\":\"ok\",\"uptime_seconds\":229.172}",
+      "headers": {
+        "Date": "Thu, 26 Nov 2026 09:52:27 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "rndr-id": "a870d8e0-c6b5-490e",
+        "Server": "cloudflare",
+        "vary": "Accept-Encoding",
+        "x-render-origin-server": "uvicorn",
+        "x-request-id": "62bdd006b87e40fb90e70e6f04131428",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a6080019589a07ae-HKG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ready",
+      "status": 200,
+      "body": "{\"ready\":true}",
+      "headers": {
+        "Date": "Thu, 26 Nov 2026 09:52:27 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "cf-cache-status": "DYNAMIC",
+        "rndr-id": "de4b2765-31cc-45b7",
+        "Server": "cloudflare",
+        "vary": "Accept-Encoding",
+        "x-render-origin-server": "uvicorn",
+        "x-request-id": "aa5fdf619f88462f8e232c4eab81678e",
+        "CF-RAY": "a608001b8cf302ce-HKG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ask",
+      "status": 401,
+      "body": "{\"detail\":\"Missing or invalid API key\"}",
+      "headers": {
+        "Date": "Thu, 26 Nov 2026 09:52:27 GMT",
+        "Content-Type": "application/json",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "rndr-id": "1cb42c87-18b6-4a59",
+        "Server": "cloudflare",
+        "vary": "Accept-Encoding",
+        "x-render-origin-server": "uvicorn",
+        "x-request-id": "13f12f7fa6ae4aaaaeb326502368ace5",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a608001d7bfe04e6-HKG",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      }
+    }
+  ],
+  "authenticated_ask": {
+    "status": 200,
+    "evidence": "ask-authenticated.json",
+    "checked_at": "2026-11-26T16:59:45.683631+07:00"
+  }
+}
